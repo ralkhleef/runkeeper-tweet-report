@@ -4,25 +4,18 @@ function parseTweets(runkeeper_tweets) {
 		window.alert('No tweets returned');
 		return;
 	}
-
-	// Build Tweet objects (handles common field names found in the dataset)
-	// Assumes a global Tweet class from your TS build is available.
-	// We do NOT rename this variable; many templates expect window.tweet_array.
 	window.tweet_array = runkeeper_tweets.map(function (t, i) {
-		// Try common keys; adjust if your data uses slightly different names.
 		var text = t.text || '';
 		var when = t.created_at || t.time || '';
-		// Some templates use (text, time); others may use (id, raw). This matches the classic template.
 		return new Tweet(text, when);
 	});
 
-	// Filter to just the written tweets (store globally for search)
-	// Prefer the Tweet.written boolean; otherwise keep anything with non-empty user text.
+	// Filter to just the written tweets
 	window.written_tweets = window.tweet_array.filter(function (tw) {
 		if (typeof tw.written !== 'undefined') {
 			return !!tw.written;
 		}
-		// Fallback: strip links + #RunKeeper and see if anything remains
+		// Fallback
 		var cleaned = String(tw.text)
 			.replace(/https?:\/\/\S+/g, '')
 			.replace(/#RunKeeper/gi, '')
@@ -31,8 +24,6 @@ function parseTweets(runkeeper_tweets) {
 		return cleaned.length > 0;
 	});
 
-	// Optional: if the handler is already attached, trigger an initial render to clear ???.
-	// (The handler also does an initial render on attach; this is just extra-safe.)
 	if (typeof window.__rk_renderSearch === 'function') {
 		window.__rk_renderSearch('');
 	}
@@ -100,14 +91,13 @@ function addEventHandlerForSearch() {
 		var q = (query || '').trim().toLowerCase();
 		textSpan.textContent = q || '(none)';
 
-		// No query: clear table and count
+		// No query
 		if (!q) {
 			tbody.innerHTML = '';
 			countSpan.textContent = '0';
 			return;
 		}
 
-		// Use the written tweets pool; guard if tweets not loaded yet
 		var pool = Array.isArray(window.written_tweets) ? window.written_tweets : [];
 
 		// Prefer searching user-written text if class provides it; fallback to full text
