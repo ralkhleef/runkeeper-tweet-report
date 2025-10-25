@@ -5,7 +5,6 @@ Built with JavaScript and TypeScript, it summarizes activity data, shows popular
 
 --How to Run--
 1. In the project folder:
-   ```bash
    npm install -g typescript live-server
    tsc --p tsconfig.json --watch
    live-server
