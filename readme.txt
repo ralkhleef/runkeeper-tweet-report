@@ -13,7 +13,7 @@
 
 3. What online resources did you consult when completing this assignment? (list sites like StackOverflow or specific URLs for tutorials; describe queries to Generative AI or use of AI-based code completion)
 
-
+I used online documentation like StackOverflow, i also asked chatgpt for help on technical issues through terminal and clarification on instrustions/how to implement some aspects of the code 
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
 
