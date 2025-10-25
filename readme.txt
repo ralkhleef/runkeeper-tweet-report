@@ -1,25 +1,11 @@
---Readme document for Ranya Al-khleef ralkhlee@uci.edu--
+--Readme document for Runkeeper Tweet Report--
 
-1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
+A web project that analyzes a week of Runkeeper tweets.  
+Built with JavaScript and TypeScript, it summarizes activity data, shows popular workout types, and includes a live tweet search.
 
-10/10 or maybe 11/10 since i did the bonus option 2 as well
-- 3/3 Summarizing tweets
-- 4/4 Identifying the most popular activities
-- 3/3 Adding a text search interface
-
-2. How long, in hours, did it take you to complete this assignment?
-
-4-6
-
-3. What online resources did you consult when completing this assignment? (list sites like StackOverflow or specific URLs for tutorials; describe queries to Generative AI or use of AI-based code completion)
-
-I used online documentation like StackOverflow, i also asked chatgpt for help on technical issues through terminal and clarification on instrustions/how to implement some aspects of the code 
-
-4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
-
-none
-
-
-5. Is there anything special we need to know in order to run your code?
-
-none
+--How to Run--
+1. In the project folder:
+   ```bash
+   npm install -g typescript live-server
+   tsc --p tsconfig.json --watch
+   live-server
